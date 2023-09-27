@@ -1,0 +1,28 @@
+function favorito(){
+var FAVORITES_KEY = 'fav';
+
+
+function updateBadge(){
+  $('.badge').text(getFavoritesCount());
+}
+
+
+function getFavoritesCount() {
+  var count = localStorage.getItem(FAVORITES_KEY);
+  return !count ? '0' : count;
+}
+
+
+function incrementFavorites(){
+  var count = parseInt(getFavoritesCount()) + 1;
+  localStorage.setItem(FAVORITES_KEY, count);
+}
+
+
+$('#count').on('click', function(){
+  incrementFavorites();
+  updateBadge();
+});
+
+updateBadge();
+}
